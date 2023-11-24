@@ -77,6 +77,21 @@ services:
       - 'REDIS_CLUSTER_CREATOR=yes'
     ports:
       - '127.0.0.1:7005:6379'
+
+  signal_database:
+    image:          postgres:16
+    container_name: postgres_database
+    restart:        always
+    environment:
+      POSTGRES_USER:     postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_MULTIPLE_DATABASES: abusedb, accountdb, keysdb, messagedb
+      PGDATA:  /var/lib/postgresql/data/pgdata
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_database:/var/lib/postgresql/data
+      - pg-init-scripts:/docker-entrypoint-initdb.d
       
 volumes:
   redis-cluster_data-0:
@@ -90,4 +105,8 @@ volumes:
   redis-cluster_data-4:
     driver: local
   redis-cluster_data-5:
+    driver: local
+  postgres_database:
+    driver: local
+  pg-init-scripts:
     driver: local
