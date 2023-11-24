@@ -130,19 +130,19 @@ dynamoDbTables:
     tableName: VerificationSessions
 
 cacheCluster: # Redis server configuration for cache cluster
-  configurationUri: redis://redis_cluster:7000/
+  configurationUri: redis://127.0.0.1:7000/
 
 clientPresenceCluster: # Redis server configuration for client presence cluster
-  configurationUri: redis://redis_cluster:7001/
+  configurationUri: redis://127.0.0.1:7000/
 
 pubsub: # Redis server configuration for pubsub cluster
-  uri: redis://redis_cluster:7002/
+  uri: redis://127.0.0.1:7000/
 
 pushSchedulerCluster: # Redis server configuration for push scheduler cluster
-  configurationUri: redis://redis_cluster:7003/
+  configurationUri: redis://127.0.0.1:7000/
 
 rateLimitersCluster: # Redis server configuration for rate limiters cluster
-  configurationUri: redis://redis_cluster:7004/
+  configurationUri: redis://127.0.0.1:7000/
 
 directoryV2:
   client: # Configuration for interfacing with Contact Discovery Service v2 cluster
@@ -181,10 +181,10 @@ svr2:
 messageCache: # Redis server configuration for message store cache
   persistDelayMinutes: 1
   cluster:
-    configurationUri: redis://redis_cluster:7005/
+    configurationUri: redis://127.0.0.1:7000/
 
 metricsCluster:
-  configurationUri: redis://redis_cluster:7006/
+  configurationUri: redis://127.0.0.1:7000/
 
 awsAttachments: # AWS S3 configuration
   accessKey: secret://awsAttachments.accessKey
